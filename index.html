@@ -1,28 +1,258 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>グリッド | GRID</title>
+  <title>グリッド｜公式サイト</title>
+  <meta name="description" content="グリッドの公式サイト。事業内容、会社概要、お問い合わせ。" />
+
+  <style>
+    :root{
+      --bg:#0b1220; --card:#111a2e; --text:#eaf0ff; --muted:#b8c4e6;
+      --accent:#ff6fae; --accent2:#8b5cf6; --accent3:#ff8a3d; /* ピンク/紫/オレンジ */
+      --line:rgba(255,255,255,.12);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP",sans-serif;background:linear-gradient(180deg,var(--bg),#070b14);color:var(--text);line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:rgba(11,18,32,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
+    .logo{display:flex;gap:12px;align-items:center;font-weight:700;min-width:220px}
+    .logo img{height:64px;width:auto;display:block}
+    .logoName{display:flex;flex-direction:column;line-height:1.15}
+    .logoName b{font-size:18px}
+    .logoName span{font-size:12px;color:var(--muted);letter-spacing:.04em}
+    .menu{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .menu a{padding:8px 10px;border-radius:10px;color:var(--muted)}
+    .menu a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .hero{padding:70px 0 40px}
+    .heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch}
+    .card{background:rgba(17,26,46,.8);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 12px 50px rgba(0,0,0,.35)}
+    h1{font-size:40px;line-height:1.2;margin:0 0 12px}
+    .lead{color:var(--muted);font-size:16px;margin:0 0 18px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06)}
+    .btn.primary{
+      background:linear-gradient(90deg,rgba(255,111,174,.22),rgba(139,92,246,.20),rgba(255,138,61,.20));
+      border-color:rgba(255,138,61,.30)
+    }
+    .btn:hover{filter:brightness(1.08)}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+    .kpi{padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+    .kpi b{display:block;font-size:18px}
+    .kpi span{color:var(--muted);font-size:12px}
+    section{padding:34px 0}
+    .secTitle{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .secTitle h2{margin:0;font-size:22px}
+    .secTitle p{margin:0;color:var(--muted);font-size:13px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .badge{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.04)}
+    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px;border:1px solid var(--line)}
+    .table th,.table td{padding:12px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    .table th{color:var(--muted);font-weight:600;background:rgba(255,255,255,.04);width:180px}
+    .table tr:last-child td{border-bottom:none}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:13px}
+    @media (max-width:900px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      h1{font-size:32px}
+      .logo img{height:56px}
+    }
+  </style>
 </head>
-<body style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans JP',sans-serif; line-height:1.7; padding:24px; max-width:900px; margin:0 auto;">
-  <header style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
-   <img src="logo.png" alt="GRID ロゴ" style="height:240px; width:auto;" />
-    <div>
-      <div style="font-size:22px; font-weight:700;">グリッド</div>
-      <div style="color:#666;">GRID</div>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo">
+        <img src="logo.png" alt="グリッド ロゴ" />
+        <div class="logoName">
+          <b>グリッド</b>
+          <span>GRID</span>
+        </div>
+      </div>
+      <nav class="menu" aria-label="グローバルナビ">
+        <a href="#service">事業</a>
+        <a href="#works">実績</a>
+        <a href="#company">会社概要</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
     </div>
   </header>
 
-  <h2>会社情報</h2>
-  <p>
-    会社名：グリッド<br>
-    住所：〒371-0836 群馬県前橋市江田町353-1 江田町第一倉庫<br>
-    電話：080-6199-5717<br>
-    mail：<a href="mailto:gridinfo1003@gmail.com">gridinfo1003@gmail.com</a>
-  </p>
+  <main>
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div class="card">
+          <span class="badge">Official Website</span>
+          <h1>現場を、もっとスムーズに。</h1>
+          <p class="lead">
+            グリッドは、現場の課題を「わかりやすく・早く・確実に」解決することを大切にしています。
+            まずはお気軽にご相談ください。
+          </p>
+          <div class="btns">
+            <a class="btn primary" href="#contact">問い合わせる</a>
+            <a class="btn" href="#company">会社概要を見る</a>
+          </div>
+
+          <div class="kpis" aria-label="ハイライト">
+            <div class="kpi"><b>前橋拠点</b><span>群馬県前橋市</span></div>
+            <div class="kpi"><b>迅速対応</b><span>相談〜提案まで</span></div>
+            <div class="kpi"><b>柔軟運用</b><span>現場に合わせる</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px">お知らせ</h3>
+          <ul>
+            <li>2025-12-26：ホームページを公開しました。</li>
+            <li>（任意）新製品・展示会・採用などの告知を追加できます。</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid var(--line);margin:16px 0">
+          <h3 style="margin:0 0 8px">連絡先</h3>
+          <p style="margin:0;color:var(--muted)">
+            電話：<a href="tel:08061995717">080-6199-5717</a><br/>
+            メール：<a href="mailto:gridinfo1003@gmail.com">gridinfo1003@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="service">
+      <div class="wrap">
+        <div class="secTitle">
+          <h2>事業内容</h2>
+          <p>（ここは後であなたの事業に合わせて文章を差し替えできます）</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <span class="badge">Service 01</span>
+            <h3 style="margin:10px 0 6px">現場支援</h3>
+            <p style="margin:0;color:var(--muted)">業務の流れ・運用課題を整理し、改善案を提案します。</p>
+            <ul>
+              <li>ヒアリング</li>
+              <li>運用設計</li>
+              <li>改善提案</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="badge">Service 02</span>
+            <h3 style="margin:10px 0 6px">企画・開発</h3>
+            <p style="margin:0;color:var(--muted)">要件をまとめ、試作・改善を重ねて形にします。</p>
+            <ul>
+              <li>要件整理</li>
+              <li>プロトタイプ</li>
+              <li>品質・コスト最適化</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="badge">Service 03</span>
+            <h3 style="margin:10px 0 6px">導入・運用</h3>
+            <p style="margin:0;color:var(--muted)">導入後も運用に合わせて改善し続けます。</p>
+            <ul>
+              <li>導入支援</li>
+              <li>運用フォロー</li>
+              <li>継続改善</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="works">
+      <div class="wrap">
+        <div class="secTitle">
+          <h2>実績</h2>
+          <p>守秘がある場合は「業界・効果」だけの記載でもOK</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <span class="badge">Case A</span>
+            <h3 style="margin:10px 0 6px">現場オペレーションの整理・改善</h3>
+            <p style="margin:0;color:var(--muted)">課題の見える化→運用の標準化→改善サイクルの設計。</p>
+          </div>
+          <div class="card">
+            <span class="badge">Case B</span>
+            <h3 style="margin:10px 0 6px">作業効率・品質の向上支援</h3>
+            <p style="margin:0;color:var(--muted)">現場の状況に合わせて導入手順・運用を最適化。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="company">
+      <div class="wrap">
+        <div class="secTitle">
+          <h2>会社概要</h2>
+          <p>確定情報を反映済み</p>
+        </div>
+
+        <table class="table" aria-label="会社概要">
+          <tr><th>会社名</th><td>グリッド</td></tr>
+          <tr><th>所在地</th><td>〒371-0836<br>群馬県前橋市江田町353-1<br>江田町第一倉庫</td></tr>
+          <tr><th>電話番号</th><td><a href="tel:08061995717">080-6199-5717</a></td></tr>
+          <tr><th>メール</th><td><a href="mailto:gridinfo1003@gmail.com">gridinfo1003@gmail.com</a></td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="secTitle">
+          <h2>お問い合わせ</h2>
+          <p>フォームなし（電話・メール）で運用</p>
+        </div>
+
+        <div class="contact">
+          <div class="card">
+            <h3 style="margin:0 0 6px">連絡先</h3>
+            <p style="margin:0;color:var(--muted)">
+              電話：<a href="tel:08061995717">080-6199-5717</a><br/>
+              メール：<a href="mailto:gridinfo1003@gmail.com">gridinfo1003@gmail.com</a>
+            </p>
+            <hr style="border:none;border-top:1px solid var(--line);margin:16px 0">
+            <p style="margin:0;color:var(--muted)">
+              お急ぎの場合はお電話が確実です。メールは原則24時間以内に返信します（運用に合わせて変更可）。
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 style="margin:0 0 6px">所在地</h3>
+            <p style="margin:0;color:var(--muted)">
+              〒371-0836 群馬県前橋市江田町353-1 江田町第一倉庫
+            </p>
+            <div class="btns" style="margin-top:12px">
+              <a class="btn primary" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps?q=%E7%BE%A4%E9%A6%AC%E7%9C%8C%E5%89%8D%E6%A9%8B%E5%B8%82%E6%B1%9F%E7%94%B0%E7%94%BA353-1">
+                Googleマップで開く
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> グリッド. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
 
 
